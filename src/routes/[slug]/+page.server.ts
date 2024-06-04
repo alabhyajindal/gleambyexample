@@ -24,7 +24,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		const title = contents.split('\n')[0].slice(4).trim();
 		const desc = contents.split('\n')[1].slice(4).trim();
 
-		const code = contents.split('\n').slice(2).join('\n');
+		const code = contents.split('\n').slice(3).join('\n');
 
 		if (title.replaceAll(' ', '_').toLowerCase() == fileName) {
 			const output = outputs[i].default;
@@ -38,7 +38,7 @@ export const load: PageServerLoad = async ({ params }) => {
 				theme: 'one-dark-pro'
 			});
 
-			exampleData = { title, desc, code, output, htmlCode, htmlOutput };
+			exampleData = { title, desc, htmlCode, htmlOutput };
 		}
 	}
 

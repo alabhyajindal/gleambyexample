@@ -35,12 +35,6 @@
 		text-decoration: none;
 	}
 
-	section {
-		display: flex;
-		flex-direction: column;
-		gap: 1.2em;
-	}
-
 	ul {
 		margin-top: 1.6em;
 		list-style-type: none;

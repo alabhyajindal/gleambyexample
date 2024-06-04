@@ -25,6 +25,9 @@
 
 	.code {
 		margin-top: 2em !important;
-		border: 1px solid var(--unexpected-aubergine);
+		padding: 1em;
+		background-color: #282c34;
+		border-radius: 0.1em;
+		border: 1px solid var(--color-unexpected-aubergine);
 	}
 </style>

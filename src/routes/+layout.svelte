@@ -1,7 +1,12 @@
 <header>
 	<h1><a href="/">Gleam by Example</a></h1>
 </header>
-<slot />
+<section>
+	<slot />
+	<footer>
+		<p>by <a href="http://alabhyajindal.com" target="_blank">Alabhya Jindal</a></p>
+	</footer>
+</section>
 
 <style>
 	:global(*) {
@@ -17,7 +22,8 @@
 		--color-black: #1e1e1e;
 		--color-blacker: #151515;
 		--color-charcoal: #2f2f2f;
-		--unexpected-aubergine: #584355;
+		--color-unexpected-aubergine: #584355;
+		--color-aged-plastic-yellow: #fffbe8;
 	}
 
 	:global(body) {
@@ -54,7 +60,21 @@
 		color: inherit;
 	}
 
-	:global(main) {
+	a {
+		color: inherit;
+	}
+
+	a:hover {
+		text-decoration: none;
+	}
+
+	footer {
+		margin-top: 2em;
+		color: var(--color-aged-plastic-yellow);
+		font-size: 0.8em;
+	}
+
+	section {
 		margin-top: 2em;
 		max-width: 600px;
 		margin-inline: auto;
