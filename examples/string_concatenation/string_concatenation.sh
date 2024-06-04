@@ -1,0 +1,2 @@
+$ gleam run
+BEAM!
