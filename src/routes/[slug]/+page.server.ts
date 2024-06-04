@@ -23,7 +23,6 @@ const getInfoFromContents = (contents: string) => {
 };
 
 const createData = async () => {
-	let exampleData;
 	let examplesData = [];
 
 	for (const [i, example] of examples.entries()) {
@@ -49,7 +48,15 @@ const createData = async () => {
 			next = { title, url };
 		}
 
-		examplesData.push({ title, desc, htmlCode, htmlOutput, next, url });
+		let prev = null;
+		if (i - 1 >= 0) {
+			const prevExample = examples[i - 1];
+			const prevExampleContents = prevExample.default;
+			let { title, url } = getInfoFromContents(prevExampleContents);
+			prev = { title, url };
+		}
+
+		examplesData.push({ url, title, desc, htmlCode, htmlOutput, next, prev });
 	}
 	return examplesData;
 };

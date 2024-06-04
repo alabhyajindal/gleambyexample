@@ -1,9 +1,21 @@
 <script lang="ts">
 	import type { PageData } from '../$types';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 	$: ({ example } = data);
+
+	const handleKeydown = (e: KeyboardEvent) => {
+		if (e.shiftKey || e.ctrlKey || e.metaKey) return;
+		if (e.key == 'ArrowLeft' && example.prev) {
+			goto(example.prev.url);
+		} else if (e.key == 'ArrowRight' && example.next) {
+			goto(example.next.url);
+		}
+	};
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <main>
 	<h1>{example.title}</h1>
