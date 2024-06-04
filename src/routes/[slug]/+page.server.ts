@@ -55,7 +55,7 @@ const createData = async () => {
 };
 
 export const load: PageServerLoad = async ({ params }) => {
-	const { slug } = params;
+	const slug = params.slug;
 	const examplesData = await createData();
 	if (examplesData) {
 		const selectedExample = examplesData.find((example) => {

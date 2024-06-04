@@ -3,6 +3,7 @@
 
 	export let data: PageData;
 	const example = data.selectedExample;
+	console.log(example.next);
 </script>
 
 <main>
