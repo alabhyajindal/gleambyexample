@@ -58,11 +58,11 @@ export const load: PageServerLoad = async ({ params }) => {
 	const slug = params.slug;
 	const examplesData = await createData();
 	if (examplesData) {
-		const selectedExample = examplesData.find((example) => {
+		const example = examplesData.find((example) => {
 			if (example.url == slug) {
 				return example;
 			}
 		});
-		return { selectedExample };
+		return { example };
 	}
 };
