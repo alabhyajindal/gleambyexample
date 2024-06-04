@@ -60,11 +60,11 @@
 		color: inherit;
 	}
 
-	a {
+	:global(a) {
 		color: inherit;
 	}
 
-	a:hover {
+	:global(a:hover) {
 		text-decoration: none;
 	}
 

@@ -13,34 +13,56 @@ const outputs: ModuleImportInterface[] = Object.values(
 	import.meta.glob('@examples/*/*.sh', { eager: true, query: 'raw' })
 );
 
-export const load: PageServerLoad = async ({ params }) => {
-	const { slug } = params;
-	const fileName = slug.replaceAll('-', '_');
+const getInfoFromContents = (contents: string) => {
+	const title = contents.split('\n')[0].slice(4).trim();
+	const desc = contents.split('\n')[1].slice(4).trim();
+	const url = title.toLowerCase().replaceAll(' ', '-');
+	const code = contents.split('\n').slice(3).join('\n');
 
+	return { title, desc, url, code };
+};
+
+const createData = async () => {
 	let exampleData;
+	let examplesData = [];
 
 	for (const [i, example] of examples.entries()) {
 		const contents = example.default;
-		const title = contents.split('\n')[0].slice(4).trim();
-		const desc = contents.split('\n')[1].slice(4).trim();
+		const { title, desc, code, url } = getInfoFromContents(contents);
 
-		const code = contents.split('\n').slice(3).join('\n');
+		const output = outputs[i].default;
+		const htmlCode = await codeToHtml(code, {
+			lang: 'gleam',
+			theme: 'one-dark-pro'
+		});
 
-		if (title.replaceAll(' ', '_').toLowerCase() == fileName) {
-			const output = outputs[i].default;
-			const htmlCode = await codeToHtml(code, {
-				lang: 'gleam',
-				theme: 'one-dark-pro'
-			});
+		const htmlOutput = await codeToHtml(output, {
+			lang: 'shell',
+			theme: 'one-dark-pro'
+		});
 
-			const htmlOutput = await codeToHtml(output, {
-				lang: 'shell',
-				theme: 'one-dark-pro'
-			});
-
-			exampleData = { title, desc, htmlCode, htmlOutput };
+		let next = null;
+		if (i + 1 < examples.length) {
+			const nextExample = examples[i + 1];
+			const nextExampleContents = nextExample.default;
+			let { title, url } = getInfoFromContents(nextExampleContents);
+			next = { title, url };
 		}
-	}
 
-	return { exampleData };
+		examplesData.push({ title, desc, htmlCode, htmlOutput, next, url });
+	}
+	return examplesData;
+};
+
+export const load: PageServerLoad = async ({ params }) => {
+	const { slug } = params;
+	const examplesData = await createData();
+	if (examplesData) {
+		const selectedExample = examplesData.find((example) => {
+			if (example.url == slug) {
+				return example;
+			}
+		});
+		return { selectedExample };
+	}
 };
