@@ -6,11 +6,6 @@
 	const examples = data.examplesData;
 
 	let image = '/lucydebug.svg';
-
-	function toggleImage() {
-		if (image == '/lucydebug.svg') image = '/lucydebughappy.svg';
-		else image = '/lucydebug.svg';
-	}
 </script>
 
 <svelte:head>
@@ -37,7 +32,6 @@
 <Footer />
 <img
 	src={image}
-	on:click={toggleImage}
 	on:mouseenter={() => {
 		image = 'lucydebughappy.svg';
 	}}
@@ -48,7 +42,8 @@
 />
 
 <!-- Added to preload the image -->
-<img style="display:none;" src="/lucydebughappy.svg" alt="Lucy the star, Gleam's mascot" />
+<!-- svelte-ignore a11y-missing-attribute -->
+<img style="display:none;" src="/lucydebughappy.svg" />
 
 <style>
 	a {
@@ -68,5 +63,11 @@
 		display: block;
 		margin-left: auto;
 		width: 200px;
+	}
+
+	@media (width <= 800px) {
+		img {
+			width: 140px;
+		}
 	}
 </style>

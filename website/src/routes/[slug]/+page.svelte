@@ -52,6 +52,7 @@
 
 	:global(pre) {
 		padding: 1em;
+		overflow-x: auto;
 	}
 
 	.next {

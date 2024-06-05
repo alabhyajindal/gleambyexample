@@ -57,7 +57,7 @@
 	h1 {
 		font-size: 1.4em;
 		font-weight: 500;
-		padding: 0.6em;
+		padding: 0.2em 0.6em;
 	}
 
 	h1 a {
