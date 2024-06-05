@@ -42,7 +42,7 @@ const createData = async () => {
 		});
 
 		const htmlOutput = await codeToHtml(output, {
-			lang: 'shell',
+			lang: 'shellsession',
 			themes: {
 				light: 'one-light',
 				dark: 'one-dark-pro'

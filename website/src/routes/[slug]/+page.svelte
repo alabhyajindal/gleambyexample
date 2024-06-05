@@ -44,7 +44,7 @@
 	.code {
 		margin-top: 2em !important;
 		border-radius: 0.1em;
-		border: 1px solid var(--color-unexpected-aubergine);
+		border: 1px solid var(--color-light-pink);
 	}
 
 	:global(pre) {
@@ -56,6 +56,11 @@
 	}
 
 	@media (prefers-color-scheme: dark) {
+		.code {
+			border: 1px solid var(--color-unexpected-aubergine);
+		}
+
+		/* Using global because the CSS styles are injected using the @html directive */
 		:global(.shiki, .shiki span) {
 			color: var(--shiki-dark) !important;
 			background-color: var(--shiki-dark-bg) !important;

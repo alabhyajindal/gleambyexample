@@ -19,6 +19,7 @@
 		--color-underwater-blue: #292d3e;
 		--color-white: #fefefc;
 		--color-faff-pink: #ffaff3;
+		--color-light-pink: #fedcfb;
 		--color-black: #1e1e1e;
 		--color-blacker: #151515;
 		--color-charcoal: #2f2f2f;
