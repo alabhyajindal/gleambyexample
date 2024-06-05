@@ -39,14 +39,21 @@
 			'Open Sans',
 			'Helvetica Neue',
 			sans-serif;
-		background-color: var(--color-underwater-blue);
-		color: var(--color-white);
+		background-color: var(--color-white);
+		color: var(--color-black);
 		line-height: 1.6;
 	}
 
 	header {
 		background-color: var(--color-faff-pink);
 		color: var(--color-black);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:global(body) {
+			background-color: var(--color-underwater-blue);
+			color: var(--color-white);
+		}
 	}
 
 	h1 {
