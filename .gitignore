@@ -8,3 +8,14 @@ node_modules
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+examples/*.beam
+examples/*.ez
+examples/build
+examples/erl_crash.dump
+
+# *.beam
+# *.ez
+# /build
+# erl_crash.dump
+
+

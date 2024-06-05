@@ -6,20 +6,32 @@ interface ModuleImportInterface {
 }
 
 const examples: ModuleImportInterface[] = Object.values(
-	import.meta.glob('@examples/*/*.gleam', { eager: true, query: 'raw' })
-);
-
-const outputs: ModuleImportInterface[] = Object.values(
-	import.meta.glob('@examples/*/*.sh', { eager: true, query: 'raw' })
+	import.meta.glob('@examples/src/*.gleam', { eager: true, query: 'raw' })
 );
 
 const getInfoFromContents = (contents: string) => {
-	const title = contents.split('\n')[0].slice(4).trim();
-	const desc = contents.split('\n')[1].slice(4).trim();
-	const url = title.toLowerCase().replaceAll(' ', '-');
-	const code = contents.split('\n').slice(3).join('\n');
+	const lines = contents.split('\n');
 
-	return { title, desc, url, code };
+	const title = lines[0].slice(4).trim();
+	const desc = lines[1].slice(4).trim();
+	const code = lines
+		.slice(3)
+		.filter((line) => {
+			return line.slice(0, 2) !== '//';
+		})
+		.join('\n');
+
+	const url = title.toLowerCase().replaceAll(' ', '-');
+	const output = lines
+		.filter((line) => {
+			if (line.slice(0, 3) == '// ') {
+				return true;
+			}
+		})
+		.map((line) => line.slice(2).trim())
+		.join('\n');
+
+	return { title, desc, url, code, output };
 };
 
 const createData = async () => {
@@ -27,9 +39,8 @@ const createData = async () => {
 
 	for (const [i, example] of examples.entries()) {
 		const contents = example.default;
-		const { title, desc, code, url } = getInfoFromContents(contents);
+		const { title, desc, code, url, output } = getInfoFromContents(contents);
 
-		const output = outputs[i].default;
 		const htmlCode = await codeToHtml(code, {
 			lang: 'gleam',
 			themes: {

@@ -1,2 +1,0 @@
-$ gleam run
-BEAM!

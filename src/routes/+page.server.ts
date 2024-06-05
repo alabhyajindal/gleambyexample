@@ -5,7 +5,7 @@ interface ModuleImportInterface {
 }
 
 const examples: ModuleImportInterface[] = Object.values(
-	import.meta.glob('@examples/*/*.gleam', { eager: true, query: 'raw' })
+	import.meta.glob('@examples/src/*.gleam', { eager: true, query: 'raw' })
 );
 
 export const load: PageServerLoad = async () => {
