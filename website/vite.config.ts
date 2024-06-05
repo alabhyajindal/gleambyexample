@@ -5,6 +5,6 @@ import { resolve } from 'path';
 export default defineConfig({
 	plugins: [sveltekit()],
 	resolve: {
-		alias: { '@examples': resolve(__dirname, './examples') }
+		alias: { '@examples': resolve(__dirname, '../examples') }
 	}
 });

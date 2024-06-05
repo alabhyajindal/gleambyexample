@@ -1,21 +1,18 @@
-.DS_Store
-node_modules
-/build
-/.svelte-kit
-/package
-.env
-.env.*
-!.env.example
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
+# Examples
 examples/*.beam
 examples/*.ez
 examples/build
 examples/erl_crash.dump
 
-# *.beam
-# *.ez
-# /build
-# erl_crash.dump
+# Website
 
-
+website/.DS_Store
+website/node_modules
+website/build
+website/.svelte-kit
+website/package
+website/.env
+website/.env.*
+website/!.env.example
+website/vite.config.js.timestamp-*
+website/vite.config.ts.timestamp-*
