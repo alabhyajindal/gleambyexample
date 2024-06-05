@@ -4,6 +4,13 @@
 
 	export let data: PageData;
 	const examples = data.examplesData;
+
+	let image = '/lucydebug.svg';
+
+	function toggleImage() {
+		if (image == '/lucydebug.svg') image = '/lucydebughappy.svg';
+		else image = '/lucydebug.svg';
+	}
 </script>
 
 <svelte:head>
@@ -28,7 +35,20 @@
 </main>
 
 <Footer />
-<img src="/lucydebug.svg" alt="Lucy" width="200" />
+<img
+	src={image}
+	on:click={toggleImage}
+	on:mouseenter={() => {
+		image = 'lucydebughappy.svg';
+	}}
+	on:mouseleave={() => {
+		image = 'lucydebug.svg';
+	}}
+	alt="Lucy"
+/>
+
+<!-- <img src="/lucydebug.svg" alt="Lucy" /> -->
+<!-- <img src="/lucydebughappy.svg" alt="Lucy happy" /> -->
 
 <style>
 	a {
@@ -47,5 +67,6 @@
 	img {
 		display: block;
 		margin-left: auto;
+		width: 200px;
 	}
 </style>
