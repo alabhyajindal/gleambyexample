@@ -1,5 +1,16 @@
+<script lang="ts">
+	function handleClick() {
+		const currentTheme = document.body.dataset.theme;
+		console.log(currentTheme);
+		document.body.dataset.theme = currentTheme == 'dark' ? 'light' : 'dark';
+	}
+</script>
+
 <header>
-	<h1><a href="/">Gleam by Example</a></h1>
+	<nav>
+		<h1><a href="/">Gleam by Example</a></h1>
+		<button on:click={handleClick}>Toggle</button>
+	</nav>
 </header>
 <section>
 	<slot />
@@ -22,6 +33,14 @@
 		--color-charcoal: #2f2f2f;
 		--color-unexpected-aubergine: #584355;
 		--color-aged-plastic-yellow: #fffbe8;
+
+		--background: var(--color-white);
+		--text: var(--color-black);
+		--border: var(--color-light-pink);
+	}
+
+	:global(html) {
+		color-scheme: light dark;
 	}
 
 	:global(body) {
@@ -37,9 +56,18 @@
 			'Open Sans',
 			'Helvetica Neue',
 			sans-serif;
-		background-color: var(--color-white);
-		color: var(--color-black);
 		line-height: 1.6;
+
+		background-color: var(--background);
+		color: var(--text);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:global(body) {
+			--background: var(--color-underwater-blue);
+			--text: var(--color-white);
+			--border: var(--color-unexpected-aubergine);
+		}
 	}
 
 	header {
@@ -47,19 +75,19 @@
 		color: var(--color-black);
 	}
 
-	@media (prefers-color-scheme: dark) {
-		:global(body) {
-			background-color: var(--color-underwater-blue);
-			color: var(--color-white);
-		}
+	header nav {
+		max-width: 600px;
+		margin-inline: auto;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 	}
 
 	h1 {
 		font-size: 1.4em;
 		font-weight: 500;
 		padding: 0.2em 0.6em;
-		max-width: 600px;
-		margin-inline: auto;
 	}
 
 	h1 a {
@@ -80,5 +108,11 @@
 		max-width: 600px;
 		margin-inline: auto;
 		padding-inline: 1em !important;
+	}
+
+	:global(body.dark) {
+		color-scheme: dark;
+		--background: var(--color-underwater-blue);
+		--text: var(--color-white);
 	}
 </style>

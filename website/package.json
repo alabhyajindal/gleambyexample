@@ -37,6 +37,7 @@
 	"dependencies": {
 		"@sveltejs/adapter-node": "^5.0.1",
 		"@types/prismjs": "^1.26.4",
+		"dark-mode-toggle": "^0.15.0",
 		"prismjs": "^1.29.0",
 		"vite-plugin-prismjs": "^0.0.11"
 	}

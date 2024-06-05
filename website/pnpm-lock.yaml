@@ -11,6 +11,9 @@ dependencies:
   '@types/prismjs':
     specifier: ^1.26.4
     version: 1.26.4
+  dark-mode-toggle:
+    specifier: ^0.15.0
+    version: 0.15.0
   prismjs:
     specifier: ^1.29.0
     version: 1.29.0
@@ -1203,6 +1206,10 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
     dev: true
+
+  /dark-mode-toggle@0.15.0:
+    resolution: {integrity: sha512-JQ/+bdEsAAB3BZapqPR6SS2M8ZcqWOdVZOE3taJHKkEFN+M5jr+ZXwCD0DbOdCshiCY0TEVxigN47nhi16d3hw==}
+    dev: false
 
   /debug@4.3.5:
     resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
