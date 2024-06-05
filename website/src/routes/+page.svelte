@@ -44,11 +44,11 @@
 	on:mouseleave={() => {
 		image = 'lucydebug.svg';
 	}}
-	alt="Lucy"
+	alt="Lucy the star, Gleam's mascot"
 />
 
-<!-- <img src="/lucydebug.svg" alt="Lucy" /> -->
-<!-- <img src="/lucydebughappy.svg" alt="Lucy happy" /> -->
+<!-- Added to preload the image -->
+<img style="display:none;" src="/lucydebughappy.svg" alt="Lucy the star, Gleam's mascot" />
 
 <style>
 	a {
