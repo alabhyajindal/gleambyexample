@@ -1,25 +1,19 @@
-# examples
+# Gleam by Example
 
-[![Package Version](https://img.shields.io/hexpm/v/examples)](https://hex.pm/packages/examples)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/examples/)
+## Directory structure
 
-```sh
-gleam add examples
-```
-```gleam
-import examples
+This directory is created using the `gleam new examples` command.
 
-pub fn main() {
-  // TODO: An example of the project in use
-}
-```
+The `src` directory contains code snippets and explaination for all examples on the website.
 
-Further documentation can be found at <https://hexdocs.pm/examples>.
+The `test` directory contains tests for the code snippets
 
-## Development
+## File structure
 
-```sh
-gleam run   # Run the project
-gleam test  # Run the tests
-gleam shell # Run an Erlang shell
-```
+First three lines are module documentation (`////`) where each line conveys the example's details
+
+1. Order number
+2. Title
+3. Description
+
+Module documentation is followed by the code for the example. Finally, we have regular comments (`//`) at the end of the file, indicating the shell output for running the code.
