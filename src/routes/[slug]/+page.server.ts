@@ -1,3 +1,4 @@
+import { getInfoFromContents } from '$lib';
 import type { PageServerLoad } from './$types';
 import { codeToHtml } from 'shiki';
 
@@ -5,41 +6,32 @@ interface ModuleImportInterface {
 	default: string;
 }
 
+interface SiblingData {
+	title: string;
+	url: string;
+}
+
+interface ExamplesData {
+	url: string;
+	title: string;
+	desc: string;
+	htmlCode: string;
+	htmlOutput: string;
+	orderNumber: number;
+	next: SiblingData | null;
+	prev: SiblingData | null;
+}
+
 const examples: ModuleImportInterface[] = Object.values(
 	import.meta.glob('@examples/src/*.gleam', { eager: true, query: 'raw' })
 );
 
-const getInfoFromContents = (contents: string) => {
-	const lines = contents.split('\n');
-
-	const title = lines[0].slice(4).trim();
-	const desc = lines[1].slice(4).trim();
-	const code = lines
-		.slice(3)
-		.filter((line) => {
-			return line.slice(0, 2) !== '//';
-		})
-		.join('\n');
-
-	const url = title.toLowerCase().replaceAll(' ', '-');
-	const output = lines
-		.filter((line) => {
-			if (line.slice(0, 3) == '// ') {
-				return true;
-			}
-		})
-		.map((line) => line.slice(2).trim())
-		.join('\n');
-
-	return { title, desc, url, code, output };
-};
-
 const createData = async () => {
-	let examplesData = [];
+	let examplesData: ExamplesData[] = [];
 
 	for (const [i, example] of examples.entries()) {
 		const contents = example.default;
-		const { title, desc, code, url, output } = getInfoFromContents(contents);
+		const { title, desc, code, url, output, orderNumber } = getInfoFromContents(contents);
 
 		const htmlCode = await codeToHtml(code, {
 			lang: 'gleam',
@@ -57,23 +49,31 @@ const createData = async () => {
 			}
 		});
 
-		let next = null;
-		if (i + 1 < examples.length) {
-			const nextExample = examples[i + 1];
-			const nextExampleContents = nextExample.default;
-			let { title, url } = getInfoFromContents(nextExampleContents);
-			next = { title, url };
-		}
+		examplesData.push({
+			url,
+			title,
+			desc,
+			htmlCode,
+			htmlOutput,
+			orderNumber,
+			next: null,
+			prev: null
+		});
+	}
 
-		let prev = null;
+	examplesData.sort((a, b) => a.orderNumber - b.orderNumber);
+
+	for (const [i, data] of examplesData.entries()) {
+		if (i + 1 < examplesData.length) {
+			const nextExample = examplesData[i + 1];
+			const { title, url } = nextExample;
+			data.next = { title, url };
+		}
 		if (i - 1 >= 0) {
-			const prevExample = examples[i - 1];
-			const prevExampleContents = prevExample.default;
-			let { title, url } = getInfoFromContents(prevExampleContents);
-			prev = { title, url };
+			const prevExample = examplesData[i - 1];
+			let { title, url } = prevExample;
+			data.prev = { title, url };
 		}
-
-		examplesData.push({ url, title, desc, htmlCode, htmlOutput, next, prev });
 	}
 	return examplesData;
 };

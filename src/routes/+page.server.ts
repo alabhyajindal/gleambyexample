@@ -1,3 +1,4 @@
+import { getInfoFromContents } from '$lib';
 import type { PageServerLoad } from './$types';
 
 interface ModuleImportInterface {
@@ -13,11 +14,10 @@ export const load: PageServerLoad = async () => {
 
 	for (const [i, example] of examples.entries()) {
 		const contents = example.default;
-		const title = contents.split('\n')[0].slice(4).trim();
-		const url = title.toLowerCase().replaceAll(' ', '-');
-
-		examplesData.push({ title, url });
+		const { title, url, orderNumber } = getInfoFromContents(contents);
+		examplesData.push({ title, url, orderNumber });
 	}
 
+	examplesData.sort((a, b) => a.orderNumber - b.orderNumber);
 	return { examplesData };
 };
