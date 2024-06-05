@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Footer from '../components/footer.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -26,6 +27,9 @@
 	</ul>
 </main>
 
+<Footer />
+<img src="/lucydebug.svg" alt="Lucy" width="200" />
+
 <style>
 	a {
 		color: inherit;
@@ -38,5 +42,10 @@
 	ul {
 		margin-top: 1.6em;
 		list-style-type: none;
+	}
+
+	img {
+		display: block;
+		margin-left: auto;
 	}
 </style>

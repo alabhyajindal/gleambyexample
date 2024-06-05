@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from '../$types';
 	import { goto } from '$app/navigation';
+	import Footer from '../../components/footer.svelte';
 
 	export let data: PageData;
 	$: ({ example } = data);
@@ -35,6 +36,8 @@
 		{/if}
 	</div>
 </main>
+
+<Footer />
 
 <style>
 	h1 {
