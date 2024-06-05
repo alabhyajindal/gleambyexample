@@ -6,35 +6,31 @@ _Gleam by Example_ is a collection of code snippets to help you get familiar wit
 
 ## Overview
 
-There are two parts to this project. Gleam code examples, and a website to show those examples.
-
-The Gleam code examples are in `examples`. The website is created with [SvelteKit](https://kit.svelte.dev).
+This project contains code examples, and a website to show those examples. The code examples are in `examples`. The website is in `website`.
 
 ## Examples
 
-### Overview
-
-`examples/src` contains code examples and explainations. `examples/test` contains tests for the code examples.
+`examples/src` contains code examples and explanations. `examples/test` contains tests for the code examples.
 
 ### File structure
 
 First three lines are module documentation (`////`) where each line conveys the example's details:
 
-1. Order number
+1. Example number
 2. Title
 3. Description
 
-Module documentation is followed by the code example.
-
-Finally, we have regular comments (`//`) at the end of the file, indicating the shell output for running the code.
+Module documentation is followed by the code example. Finally, we have regular comments (`//`) at the end of the file, indicating the shell output for running the code.
 
 ## Website
 
-The website reads the Gleam files and creates a website from it. It is statically generated using SvelteKit.
+The website reads the Gleam files and creates a website. It is statically generated with [SvelteKit](https://kit.svelte.dev).
 
-There are two templates, which are converted to HTML using the code examples.
+There are two templates, which are converted to HTML using the code examples:
 
-`src/routes/+page.svelte` is the template for the index page.
-`src/routes/[slug]/+page.svelte` is the template for the example page.
+- `website/src/routes/+page.svelte` for the index page
+- `website/src/routes/[slug]/+page.svelte` for the example page
 
-Colors for the website have been taken from the Gleam's [branding](https://gleam.run/branding) page.
+Syntax highlighting is done with [Shiki](https://shiki.matsu.io).
+Colors are based on Gleam's [branding](https://gleam.run/branding).
+Light/dark themes are supported based on the person's device preference.
