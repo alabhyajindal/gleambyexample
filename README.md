@@ -1,38 +1,40 @@
-# create-svelte
+# Gleam by Example
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Welcome!
 
-## Creating a project
+_Gleam by Example_ is a collection of code snippets to help you get familiar with [Gleam](https://gleam.run/).
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Overview
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+There are two parts to this project. Gleam code examples, and a website to show those examples.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+The Gleam code examples are in `examples`. The website is created with [SvelteKit](https://kit.svelte.dev).
 
-## Developing
+## Examples
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Overview
 
-```bash
-npm run dev
+`examples/src` contains code examples and explainations. `examples/test` contains tests for the code examples.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### File structure
 
-## Building
+First three lines are module documentation (`////`) where each line conveys the example's details:
 
-To create a production version of your app:
+1. Order number
+2. Title
+3. Description
 
-```bash
-npm run build
-```
+Module documentation is followed by the code example.
 
-You can preview the production build with `npm run preview`.
+Finally, we have regular comments (`//`) at the end of the file, indicating the shell output for running the code.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Website
+
+The website reads the Gleam files and creates a website from it. It is statically generated using SvelteKit.
+
+There are two templates, which are converted to HTML using the code examples.
+
+`src/routes/+page.svelte` is the template for the index page.
+`src/routes/[slug]/+page.svelte` is the template for the example page.
+
+Colors for the website have been taken from the Gleam's [branding](https://gleam.run/branding) page.
