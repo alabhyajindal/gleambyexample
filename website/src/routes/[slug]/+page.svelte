@@ -59,14 +59,32 @@
 		margin-top: 1.6em;
 	}
 
-	@media (prefers-color-scheme: dark) {
-		/* Using global because the CSS styles are injected using the @html directive */
-		:global(.shiki, .shiki span) {
-			color: var(--shiki-dark) !important;
-			background-color: var(--shiki-dark-bg) !important;
-			font-style: var(--shiki-dark-font-style) !important;
-			font-weight: var(--shiki-dark-font-weight) !important;
-			text-decoration: var(--shiki-dark-text-decoration) !important;
-		}
+	/* Light Mode Styles */
+	:global(body:not(.dark) .shiki),
+	:global(body:not(.dark) .shiki span) {
+		--code-color: var(--shiki-light);
+		--code-background-color: var(--shiki-light-bg);
+		--code-font-style: var(--shiki-light-font-style);
+		--code-font-weight: var(--shiki-light-font-weight);
+		--code-text-decoration: var(--shiki-light-text-decoration);
+	}
+
+	/* Dark Mode Styles */
+	:global(body.dark .shiki),
+	:global(body.dark .shiki span) {
+		--code-color: var(--shiki-dark);
+		--code-background-color: var(--shiki-dark-bg);
+		--code-font-style: var(--shiki-dark-font-style);
+		--code-font-weight: var(--shiki-dark-font-weight);
+		--code-text-decoration: var(--shiki-dark-text-decoration);
+	}
+
+	:global(.shiki),
+	:global(.shiki span) {
+		color: var(--code-color);
+		background-color: var(--code-background-color);
+		font-style: var(--code-font-style);
+		font-weight: var(--code-font-weight);
+		text-decoration: var(--code-text-decoration);
 	}
 </style>

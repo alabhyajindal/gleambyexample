@@ -62,7 +62,8 @@ export const getExamples = async () => {
 			themes: {
 				light: 'one-light',
 				dark: 'one-dark-pro'
-			}
+			},
+			defaultColor: false
 		});
 
 		const htmlOutput = await codeToHtml(output, {
@@ -70,7 +71,8 @@ export const getExamples = async () => {
 			themes: {
 				light: 'one-light',
 				dark: 'one-dark-pro'
-			}
+			},
+			defaultColor: false
 		});
 
 		examplesData.push({

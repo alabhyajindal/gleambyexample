@@ -1,8 +1,7 @@
 <script lang="ts">
 	function handleClick() {
-		const currentTheme = document.body.dataset.theme;
-		console.log(currentTheme);
-		document.body.dataset.theme = currentTheme == 'dark' ? 'light' : 'dark';
+		// const isDark = document.body.classList.contains('dark');
+		document.body.classList.toggle('dark');
 	}
 </script>
 
