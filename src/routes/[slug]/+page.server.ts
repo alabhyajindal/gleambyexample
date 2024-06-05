@@ -32,12 +32,18 @@ const createData = async () => {
 		const output = outputs[i].default;
 		const htmlCode = await codeToHtml(code, {
 			lang: 'gleam',
-			theme: 'one-dark-pro'
+			themes: {
+				light: 'one-light',
+				dark: 'one-dark-pro'
+			}
 		});
 
 		const htmlOutput = await codeToHtml(output, {
 			lang: 'shell',
-			theme: 'one-dark-pro'
+			themes: {
+				light: 'one-light',
+				dark: 'one-dark-pro'
+			}
 		});
 
 		let next = null;

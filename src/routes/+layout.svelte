@@ -77,7 +77,6 @@
 
 	footer {
 		margin-top: 2em;
-		color: var(--color-aged-plastic-yellow);
 		font-size: 0.8em;
 	}
 

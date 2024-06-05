@@ -43,13 +43,25 @@
 
 	.code {
 		margin-top: 2em !important;
-		padding: 1em;
-		background-color: #282c34;
 		border-radius: 0.1em;
 		border: 1px solid var(--color-unexpected-aubergine);
 	}
 
+	:global(pre) {
+		padding: 1em;
+	}
+
 	.next {
 		margin-top: 1.6em;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:global(.shiki, .shiki span) {
+			color: var(--shiki-dark) !important;
+			background-color: var(--shiki-dark-bg) !important;
+			font-style: var(--shiki-dark-font-style) !important;
+			font-weight: var(--shiki-dark-font-weight) !important;
+			text-decoration: var(--shiki-dark-text-decoration) !important;
+		}
 	}
 </style>
