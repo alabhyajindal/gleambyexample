@@ -1,3 +1,25 @@
+import { codeToHtml } from 'shiki';
+
+interface ModuleImportInterface {
+	default: string;
+}
+
+interface SiblingData {
+	title: string;
+	slug: string;
+}
+
+interface ExamplesData {
+	slug: string;
+	title: string;
+	desc: string;
+	htmlCode: string;
+	htmlOutput: string;
+	orderNumber: number;
+	next: SiblingData | null;
+	prev: SiblingData | null;
+}
+
 export const getInfoFromContents = (contents: string) => {
 	const lines = contents.split('\n');
 
@@ -10,7 +32,7 @@ export const getInfoFromContents = (contents: string) => {
 		})
 		.join('\n');
 
-	const url = title.toLowerCase().replaceAll(' ', '-');
+	const slug = title.toLowerCase().replaceAll(' ', '-');
 	const orderNumber = Number(lines[0].slice(4).trim());
 	const output = lines
 		.filter((line) => {
@@ -21,5 +43,79 @@ export const getInfoFromContents = (contents: string) => {
 		.map((line) => line.slice(2).trim())
 		.join('\n');
 
-	return { title, desc, url, code, output, orderNumber };
+	return { title, desc, slug, code, output, orderNumber };
 };
+
+export const getExamples = async () => {
+	const examples: ModuleImportInterface[] = Object.values(
+		import.meta.glob('@examples/src/*.gleam', { eager: true, query: 'raw' })
+	);
+
+	let examplesData: ExamplesData[] = [];
+
+	for (const [i, example] of examples.entries()) {
+		const contents = example.default;
+		const { title, desc, code, slug, output, orderNumber } = getInfoFromContents(contents);
+
+		const htmlCode = await codeToHtml(code, {
+			lang: 'gleam',
+			themes: {
+				light: 'one-light',
+				dark: 'one-dark-pro'
+			}
+		});
+
+		const htmlOutput = await codeToHtml(output, {
+			lang: 'shellsession',
+			themes: {
+				light: 'one-light',
+				dark: 'one-dark-pro'
+			}
+		});
+
+		examplesData.push({
+			slug,
+			title,
+			desc,
+			htmlCode,
+			htmlOutput,
+			orderNumber,
+			next: null,
+			prev: null
+		});
+	}
+
+	examplesData.sort((a, b) => a.orderNumber - b.orderNumber);
+
+	for (const [i, data] of examplesData.entries()) {
+		if (i + 1 < examplesData.length) {
+			const nextExample = examplesData[i + 1];
+			const { title, slug } = nextExample;
+			data.next = { title, slug };
+		}
+		if (i - 1 >= 0) {
+			const prevExample = examplesData[i - 1];
+			let { title, slug } = prevExample;
+			data.prev = { title, slug };
+		}
+	}
+	return examplesData;
+};
+
+export const getExample = async (slug: string) => {
+	let examples = await getExamples();
+	let example = examples.find((example) => example.slug == slug);
+	return example;
+};
+
+export function pluckData<T extends object>(arr: T[], keys: (keyof T)[]): Partial<T>[] {
+	return arr.map((obj) => {
+		const newObj: Partial<T> = {};
+		keys.forEach((key) => {
+			if (key in obj) {
+				newObj[key] = obj[key];
+			}
+		});
+		return newObj;
+	});
+}

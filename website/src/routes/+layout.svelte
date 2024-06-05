@@ -58,6 +58,8 @@
 		font-size: 1.4em;
 		font-weight: 500;
 		padding: 0.2em 0.6em;
+		max-width: 600px;
+		margin-inline: auto;
 	}
 
 	h1 a {

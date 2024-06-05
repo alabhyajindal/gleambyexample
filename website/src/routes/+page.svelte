@@ -3,7 +3,7 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	const examples = data.examplesData;
+	const examples = data.examplesList;
 
 	let image = '/lucydebug.svg';
 </script>
@@ -24,7 +24,7 @@
 	</section>
 	<ul>
 		{#each examples as example}
-			<li><a href={example.url}>{example.title}</a></li>
+			<li><a href={example.slug}>{example.title}</a></li>
 		{/each}
 	</ul>
 </main>

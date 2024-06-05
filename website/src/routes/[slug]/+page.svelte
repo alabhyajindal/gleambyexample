@@ -9,9 +9,9 @@
 	const handleKeydown = (e: KeyboardEvent) => {
 		if (e.shiftKey || e.ctrlKey || e.metaKey) return;
 		if (e.key == 'ArrowLeft' && example.prev) {
-			goto(example.prev.url);
+			goto(example.prev.slug);
 		} else if (e.key == 'ArrowRight' && example.next) {
-			goto(example.next.url);
+			goto(example.next.slug);
 		}
 	};
 </script>
@@ -32,7 +32,7 @@
 
 	<div class="next">
 		{#if example.next}
-			<p>Next example, <a href={example.next.url}>{example.next.title}</a></p>
+			<p>Next example, <a href={example.next.slug}>{example.next.title}</a></p>
 		{/if}
 	</div>
 </main>
