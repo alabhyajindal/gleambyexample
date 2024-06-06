@@ -4,6 +4,11 @@
 	box-sizing: border-box;
 }
 
+html {
+	color-scheme: light dark;
+	overflow-y: scroll;
+}
+
 :root {
 	--color-underwater-blue: #292d3e;
 	--color-white: #fefefc;
@@ -21,6 +26,7 @@
 
 	background-color: var(--background);
 	color: var(--text);
+	color-scheme: light;
 }
 
 body {
@@ -43,6 +49,7 @@ body {
 	--background: var(--color-underwater-blue);
 	--text: var(--color-white);
 	--border: var(--color-unexpected-aubergine);
+	color-scheme: dark;
 }
 
 /* body.light {
