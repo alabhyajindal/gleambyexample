@@ -1,7 +1,9 @@
 <footer>
 	<p>
 		<a href="http://alabhyajindal.com" target="_blank">Alabhya Jindal</a>,
-		<a href="http://github.com/alabhyajindal/gleambyexample" target="_blank">source</a>
+		<a href="http://github.com/alabhyajindal/gleambyexample" target="_blank"
+			>contribute an example!</a
+		>
 	</p>
 </footer>
 
