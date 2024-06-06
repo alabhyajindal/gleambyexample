@@ -1,6 +1,6 @@
 //// 2
-//// String Concatenation
-//// Combining two or multiple strings.
+//// Combining strings
+//// 
 
 import gleam/io
 import gleam/string
