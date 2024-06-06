@@ -52,19 +52,6 @@ body {
 	color-scheme: dark;
 }
 
-/* body.light {
-	--background: var(--color-white);
-	--text: var(--color-black);
-} */
-
-/* @media (prefers-color-scheme: dark) {
-	body {
-		--background: var(--color-underwater-blue);
-		--text: var(--color-white);
-		--border: var(--color-unexpected-aubergine);
-	}
-} */
-
 a {
 	color: inherit;
 }
@@ -105,4 +92,42 @@ pre {
 	font-style: var(--code-font-style);
 	font-weight: var(--code-font-weight);
 	text-decoration: var(--code-text-decoration);
+}
+
+.toggle {
+	height: 25px;
+	width: 25px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	background-image: url('/sun.svg');
+}
+
+.toggle-dark {
+	background-image: url('/moon.svg');
+}
+
+header {
+	background-color: var(--color-faff-pink);
+	color: var(--color-black);
+	padding: 0.2em 0.6em;
+}
+
+header nav {
+	max-width: 600px;
+	margin-inline: auto;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+header h1 {
+	font-size: 1.4em;
+	font-weight: 500;
+}
+
+header h1 a {
+	text-decoration: none;
+	color: inherit;
 }

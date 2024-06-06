@@ -2,23 +2,36 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<!-- <link rel="icon" href="%sveltekit.assets%/favicon.png" /> -->
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
-
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<header>
+			<nav>
+				<h1><a href="/">Gleam by Example</a></h1>
+				<button class="toggle" onclick="handleClick()"></button>
+			</nav>
+		</header>
 		<script>
+			const theme = getPreferredTheme();
+			const toggleElem = document.querySelector('.toggle');
+
 			function getPreferredTheme() {
 				const mediaPrefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
 				return mediaPrefersDarkTheme.matches ? 'dark' : 'light';
 			}
 
-			const theme = getPreferredTheme();
 			if (theme == 'dark') {
 				document.documentElement.classList.add('dark');
+				toggleElem.classList.add('toggle-dark');
+			}
+
+			function handleClick() {
+				document.documentElement.classList.toggle('dark');
+				toggleElem.classList.toggle('toggle-dark');
 			}
 		</script>
-	</head>
-	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
