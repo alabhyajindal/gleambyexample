@@ -60,7 +60,7 @@ export const getExamples = async () => {
 		const htmlCode = await codeToHtml(code, {
 			lang: 'gleam',
 			themes: {
-				light: 'one-light',
+				light: 'solarized-light',
 				dark: 'one-dark-pro'
 			},
 			defaultColor: false
@@ -69,7 +69,7 @@ export const getExamples = async () => {
 		const htmlOutput = await codeToHtml(output, {
 			lang: 'shellsession',
 			themes: {
-				light: 'one-light',
+				light: 'solarized-light',
 				dark: 'one-dark-pro'
 			},
 			defaultColor: false

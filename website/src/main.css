@@ -20,7 +20,8 @@ html {
 	--color-unexpected-aubergine: #584355;
 	--color-aged-plastic-yellow: #fffbe8;
 
-	--background: var(--color-white);
+	/* --background: var(--color-white); */
+	--background: var(--color-aged-plastic-yellow);
 	--text: var(--color-black);
 	--border: var(--color-light-pink);
 

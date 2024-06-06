@@ -41,10 +41,6 @@
 	alt="Lucy the star, Gleam's mascot"
 />
 
-<!-- Added to preload the image -->
-<!-- svelte-ignore a11y-missing-attribute -->
-<img style="display:none;" src="/lucydebughappy.svg" />
-
 <style>
 	a {
 		color: inherit;
