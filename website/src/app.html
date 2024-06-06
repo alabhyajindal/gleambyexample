@@ -22,15 +22,27 @@
 				return mediaPrefersDarkTheme.matches ? 'dark' : 'light';
 			}
 
-			if (theme == 'dark') {
-				document.documentElement.classList.add('dark');
-				toggleElem.classList.add('toggle-dark');
+			function setTheme(theme) {
+				if (theme == 'dark') {
+					document.documentElement.classList.add('dark');
+					toggleElem.classList.add('toggle-dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+					toggleElem.classList.remove('toggle-dark');
+				}
 			}
+
+			setTheme(theme);
 
 			function handleClick() {
 				document.documentElement.classList.toggle('dark');
 				toggleElem.classList.toggle('toggle-dark');
 			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+				const newTheme = event.matches ? 'dark' : 'light';
+				setTheme(newTheme);
+			});
 		</script>
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
