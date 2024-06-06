@@ -44,6 +44,7 @@ body {
 		'Helvetica Neue',
 		sans-serif;
 	line-height: 1.6;
+	margin-bottom: 2em;
 }
 
 :root.dark {
