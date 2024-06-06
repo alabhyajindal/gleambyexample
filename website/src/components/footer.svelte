@@ -1,5 +1,8 @@
 <footer>
-	<p>by <a href="http://alabhyajindal.com" target="_blank">Alabhya Jindal</a></p>
+	<p>
+		<a href="http://alabhyajindal.com" target="_blank">Alabhya Jindal</a>,
+		<a href="http://github.com/alabhyajindal/gleambyexample" target="_blank">source</a>
+	</p>
 </footer>
 
 <style>

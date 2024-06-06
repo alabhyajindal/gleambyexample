@@ -1,6 +1,6 @@
-# Gleam by Example
+![Gleam by Example](/website/static/gleambyexample.png)
 
-Welcome!
+# Gleam by Example
 
 _Gleam by Example_ is a collection of code snippets to help you get familiar with [Gleam](https://gleam.run/).
 
@@ -31,6 +31,6 @@ There are two templates, which are converted to HTML using the code examples:
 - `website/src/routes/+page.svelte` for the index page
 - `website/src/routes/[slug]/+page.svelte` for the example page
 
-Syntax highlighting is done with [Shiki](https://shiki.matsu.io).
+Syntax highlighting with [Shiki](https://shiki.matsu.io).
 Colors are based on Gleam's [branding](https://gleam.run/branding).
-Light/dark themes are supported based on the person's device preference.
+Lucy's image is a modification of the original [Lucy Debug Fail](https://gleam.run/images/lucy/lucydebugfail.svg) image.
