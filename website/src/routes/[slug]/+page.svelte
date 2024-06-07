@@ -22,7 +22,7 @@
 <main>
 	<h1>{example.title}</h1>
 
-	<p>{example.desc}</p>
+	{@html example.desc}
 
 	<div class="code">
 		{@html example.htmlCode}

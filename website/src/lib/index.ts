@@ -21,11 +21,20 @@ interface ExamplesData {
 	prev: SiblingData | null;
 }
 
+function convertToHtml(input: string) {
+	// Replace backtick-enclosed text with <code> tags
+	let processedString = input.replace(/`([^`]+)`/g, '<code>$1</code>');
+	// Wrap the result in a <p> tag
+	let htmlOutput = `<p>${processedString}</p>`;
+	return htmlOutput;
+}
+
 export const getInfoFromContents = (contents: string) => {
 	const lines = contents.split('\n');
 
 	const title = lines[1].slice(4).trim();
-	const desc = lines[2].slice(4).trim();
+	// const desc = lines[2].slice(4).trim();
+	const desc = convertToHtml(lines[2].slice(4).trim());
 	const code = lines
 		.slice(4)
 		.filter((line) => {

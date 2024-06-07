@@ -1,6 +1,6 @@
 //// 8
 //// Case expressions
-//// 
+//// Used to perform conditional operations. The compiler will help you account for all possible cases for each case expression.
 
 import gleam/int
 import gleam/io

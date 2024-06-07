@@ -1,6 +1,6 @@
 //// 4
 //// Functions
-//// 
+//// Type declarations are optional but a good practice. The last statement in a function is implicitly returned.
 
 import gleam/int
 import gleam/io

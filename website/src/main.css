@@ -133,3 +133,7 @@ header h1 a {
 	text-decoration: none;
 	color: inherit;
 }
+
+:not(pre) > code {
+	border-bottom: 1px solid var(--border);
+}

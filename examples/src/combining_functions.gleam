@@ -1,6 +1,6 @@
 //// 5
 //// Combining functions
-//// 
+//// Pipelines make it easy to combine two functions. Where the return value of the first becomes the input of the second.
 
 import gleam/io
 

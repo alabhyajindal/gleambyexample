@@ -1,6 +1,6 @@
 //// 6
 //// List additions
-//// 
+//// Operations in front of the list take constant time, operations at the end take linear time.
 
 import gleam/io
 import gleam/list

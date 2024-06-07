@@ -1,6 +1,6 @@
 //// 3
 //// Combining strings
-//// 
+//// A few different ways to combine strings together.
 
 import gleam/io
 import gleam/string

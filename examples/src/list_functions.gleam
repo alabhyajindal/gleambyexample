@@ -1,6 +1,6 @@
 //// 7
 //// List functions
-//// 
+//// `range` creates a list from two values. `map` and `filter` perform a function on each item of a list.
 
 import gleam/io
 import gleam/list

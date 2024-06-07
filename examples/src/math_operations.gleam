@@ -1,6 +1,6 @@
 //// 2
 //// Math operations
-//// 
+//// Operations on numbers work as you would expect. Notice how the float types have different operators from integers.
 
 import gleam/io
 
