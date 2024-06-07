@@ -1,5 +1,3 @@
-# Gleam by Example
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/alabhyajindal/gleambyexample/assets/52493077/b03239a7-3b2b-46d9-83b5-67035ce0d735">
   <source media="(prefers-color-scheme: light)" srcset="/website/static/gleambyexample.png">
