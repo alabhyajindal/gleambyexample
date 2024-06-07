@@ -11,6 +11,7 @@ interface SiblingData {
 
 interface ExamplesData {
 	slug: string;
+	fileName: string;
 	title: string;
 	desc: string;
 	htmlCode: string;
@@ -33,6 +34,7 @@ export const getInfoFromContents = (contents: string) => {
 		.join('\n');
 
 	const slug = title.toLowerCase().replaceAll(' ', '-');
+	const fileName = title.toLowerCase().replaceAll(' ', '_');
 	const orderNumber = Number(lines[0].slice(4).trim());
 	const output = lines
 		.filter((line) => {
@@ -43,7 +45,7 @@ export const getInfoFromContents = (contents: string) => {
 		.map((line) => line.slice(2).trim())
 		.join('\n');
 
-	return { title, desc, slug, code, output, orderNumber };
+	return { title, desc, slug, code, output, orderNumber, fileName };
 };
 
 export const getExamples = async () => {
@@ -55,7 +57,8 @@ export const getExamples = async () => {
 
 	for (const [i, example] of examples.entries()) {
 		const contents = example.default;
-		const { title, desc, code, slug, output, orderNumber } = getInfoFromContents(contents);
+		const { title, desc, code, slug, output, orderNumber, fileName } =
+			getInfoFromContents(contents);
 
 		const htmlCode = await codeToHtml(code, {
 			lang: 'gleam',
@@ -77,6 +80,7 @@ export const getExamples = async () => {
 
 		examplesData.push({
 			slug,
+			fileName,
 			title,
 			desc,
 			htmlCode,

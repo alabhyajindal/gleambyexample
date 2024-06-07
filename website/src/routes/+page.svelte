@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Footer from '../components/footer.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -29,7 +28,13 @@
 	</ul>
 </main>
 
-<Footer />
+<footer>
+	<p>
+		<a href="https://github.com/alabhyajindal/gleambyexample" target="_blank"
+			>Contribute an example!</a
+		>
+	</p>
+</footer>
 <img
 	src={image}
 	on:mouseenter={() => {
@@ -65,5 +70,10 @@
 		img {
 			width: 140px;
 		}
+	}
+
+	footer {
+		margin-top: 2em;
+		font-size: 0.8em;
 	}
 </style>
